@@ -3,5 +3,6 @@
 
 ## TECNOLOGIAS
 * Frontend: Web Components (LIT)
-* Backend: RUST, NODE
+* Backend: RUST
+* WebAssembly
 * Libreria FFmpeg
