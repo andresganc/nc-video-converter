@@ -1,5 +1,5 @@
 # NC VIDEO CONVERTER
-- Aplicacion para convertir formatos de video
+- Aplicativo convertidor de video desarrollado con Web Components, Node, Rust y la libreria FFmpeg 
 
 ## TECNOLOGIAS
 * Frontend: Web Components (LIT)
