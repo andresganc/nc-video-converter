@@ -7,9 +7,8 @@ import '@views/menus/horizontal-menu'
 import '@views/menus/vertical-menu'
 
 // PAGES
-import '@views/page-home/page-home-desktop'
 import '@views/page-converter/page-converter-desktop'
-import '@views/page-converter/page-converter-mobile'
+import '@views/page-finished/page-finished-desktop'
 
 @customElement('main-layout')
 export class MainLayout extends LitElement {
@@ -21,9 +20,11 @@ export class MainLayout extends LitElement {
         switch (this.main) {
         case 'converter':
             return html`<page-converter-desktop></page-converter-desktop>`;
+        case 'finished':
+            return html`<page-finished-desktop></page-finished-desktop>`;
         case 'home':
         default:
-            return html`<page-home-desktop></page-home-desktop>`;
+            return html`<page-converter-desktop></page-converter-desktop>`;
         }
     }
 

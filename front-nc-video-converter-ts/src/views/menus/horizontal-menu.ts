@@ -14,7 +14,7 @@ export class HorizontalMenu extends LitElement {
 
                     </div>
                     <div>
-                        <p>WEB COMPONENTS</p>
+                        <p>NC VIDEO CONVERTER</p>
                     </div>
                 </div>
                 <div class='menu__nav'>

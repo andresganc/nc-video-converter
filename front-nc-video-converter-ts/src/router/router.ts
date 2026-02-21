@@ -5,6 +5,7 @@ import { Router } from '@lit-labs/router'
 
 // LAYOUTS
 import '@layouts/main-layout'
+import '@layouts/home-layout'
 
 @customElement('main-router')
 export class MainRouter extends LitElement {
@@ -22,14 +23,24 @@ export class MainRouter extends LitElement {
         },
 
         {
+        path: '/main',
+        render: () => html`<main-layout main="converter"></main-layout>`,
+        },
+
+        {
         path: '/main/converter',
-        render: () => html`<main-layout page="converter"></main-layout>`,
+        render: () => html`<main-layout main="converter"></main-layout>`,
+        },
+
+        {
+        path: '/main/finished',
+        render: () => html`<main-layout main="finished"></main-layout>`,
         },
 
         {
         path: '/main/:name',
         render: ({ params }) =>
-            html`<main-layout component=${params.name}></main-layout>`,
+            html`<main-layout main=${params.name}></main-layout>`,
         },
     ]);
 

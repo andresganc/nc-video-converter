@@ -6,11 +6,8 @@ import { customElement, property } from 'lit/decorators.js'
 import '@views/menus/horizontal-menu'
 
 // PAGES
-import '@views/page-home/index'
-import '@views/page-about/index'
-
-import '@/views/page-home/page-home-desktop'
-import '@/views/page-about/page-about-desktop'
+import '@views/page-home/page-home-desktop'
+import '@views/page-about/page-about-desktop'
 
 @customElement('home-layout')
 export class HomeLayout extends LitElement {

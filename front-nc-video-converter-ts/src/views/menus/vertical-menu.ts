@@ -13,7 +13,7 @@ export class VerticalMenu extends LitElement {
 
                     </div>
                     <div>
-                        <p>COMPONENTS</p>
+                        <p>MENU</p>
                     </div>
                 </div>
                 <div class='menu__nav'>
