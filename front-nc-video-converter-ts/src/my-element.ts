@@ -18,12 +18,8 @@ export class MyElement extends LitElement {
 
   static styles = css`
     :host {
-      /* display: block; */
-      /* max-width: 1280px; */
-      margin: 0 auto;
-      padding: .5rem;
-      text-align: center;
-      background-color: aqua;
+      margin: 0;
+      padding: 0;
     }
   `
 }

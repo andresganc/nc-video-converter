@@ -36,7 +36,6 @@ export class HomeLayout extends LitElement {
                         ${this.renderPage()}
                     </main>
                 </div>
-                
             </div>
         `
     }
@@ -44,18 +43,10 @@ export class HomeLayout extends LitElement {
     static get styles() {
         return css`
             :host {
-                display: block;
+                /* display: inline-block; */
                 margin: 0;
-                padding: 0;
-                background-color: brown;
-            }
-
-            /* .layout {
-                display: inline-block;
-                padding: 1rem 2rem;
-                background-color: #424242;
-            } */
-
+                padding: .3rem;
+            }  
 
         `
     }
