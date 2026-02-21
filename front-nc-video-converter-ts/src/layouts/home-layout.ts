@@ -44,9 +44,10 @@ export class HomeLayout extends LitElement {
     static get styles() {
         return css`
             :host {
-                display: inline-block;
+                display: block;
                 margin: 0;
                 padding: 0;
+                background-color: brown;
             }
 
             /* .layout {

@@ -13,35 +13,40 @@ export class MainRouter extends LitElement {
     private router = new Router(this, [
 
         {
-        path: '/',
-        render: () => html`<home-layout page="home"></home-layout>`,
+            path: '/',
+            render: () => html`<home-layout page="home"></home-layout>`,
         },
 
         {
-        path: '/about',
-        render: () => html`<home-layout page="about"></home-layout>`,
+            path: '/about',
+            render: () => html`<home-layout page="about"></home-layout>`,
         },
 
         {
-        path: '/main',
-        render: () => html`<main-layout main="converter"></main-layout>`,
+            path: '/main',
+            render: () => html`<main-layout main="converter"></main-layout>`,
         },
 
         {
-        path: '/main/converter',
-        render: () => html`<main-layout main="converter"></main-layout>`,
+            path: '/main/converter',
+            render: () => html`<main-layout main="converter"></main-layout>`,
         },
 
         {
-        path: '/main/finished',
-        render: () => html`<main-layout main="finished"></main-layout>`,
+            path: '/main/finished',
+            render: () => html`<main-layout main="finished"></main-layout>`,
         },
 
         {
-        path: '/main/:name',
-        render: ({ params }) =>
-            html`<main-layout main=${params.name}></main-layout>`,
+            path: '/main/:name',
+            render: ({ params }) => html`<main-layout main=${params.name}></main-layout>`,
         },
+
+        {
+            path: '(.*)',
+            render: () => html`<h2>Error 404 - Pagina no encontrada</h2>`
+        },
+
     ]);
 
     render() {
