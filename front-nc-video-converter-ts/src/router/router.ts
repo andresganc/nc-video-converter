@@ -14,33 +14,43 @@ export class MainRouter extends LitElement {
 
         {
             path: '/',
-            render: () => html`<home-layout page="home"></home-layout>`,
+            render: () => html`<main-layout main="home"></main-layout>`,
         },
 
         {
-            path: '/about',
-            render: () => html`<home-layout page="about"></home-layout>`,
+            path: '/videos',
+            render: () => html`<main-layout main="videos"></main-layout>`,
         },
 
         {
-            path: '/main',
+            path: '/converter',
             render: () => html`<main-layout main="converter"></main-layout>`,
         },
 
         {
-            path: '/main/converter',
-            render: () => html`<main-layout main="converter"></main-layout>`,
-        },
-
-        {
-            path: '/main/finished',
+            path: '/finished',
             render: () => html`<main-layout main="finished"></main-layout>`,
         },
 
         {
-            path: '/main/:name',
-            render: ({ params }) => html`<main-layout main=${params.name}></main-layout>`,
+            path: '/about',
+            render: () => html`<main-layout main="about"></main-layout>`,
         },
+
+        // {
+        //     path: '/main/converter',
+        //     render: () => html`<main-layout main="converter"></main-layout>`,
+        // },
+
+        // {
+        //     path: '/main/finished',
+        //     render: () => html`<main-layout main="finished"></main-layout>`,
+        // },
+
+        // {
+        //     path: '/main/:name',
+        //     render: ({ params }) => html`<main-layout main=${params.name}></main-layout>`,
+        // },
 
         {
             path: '(.*)',
