@@ -9,8 +9,8 @@ import '@views/menus/horizontal-menu'
 import '@views/page-home/index'
 import '@views/page-about/index'
 
-import '@views/page-home/page-home'
-import '@views/page-about/page-about'
+import '@/views/page-home/page-home-desktop'
+import '@/views/page-about/page-about-desktop'
 
 @customElement('main-layout')
 export class MainLayout extends LitElement {
