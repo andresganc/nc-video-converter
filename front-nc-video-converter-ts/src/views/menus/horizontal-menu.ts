@@ -39,7 +39,7 @@ export class HorizontalMenu extends LitElement {
                                     />
                                 </svg>
                             </div>
-                            <div><a href='/components'>COMPONENTS</a></div>
+                            <div><a href='/main'>CONVERTER</a></div>
                         </div>
 
                         <div class='menu__nav--nav-item item'>

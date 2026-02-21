@@ -1,29 +1,28 @@
 
-import { LitElement, css, html } from 'lit'
+import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
 
 // MENUS
 import '@views/menus/horizontal-menu'
+import '@views/menus/vertical-menu'
 
 // PAGES
-import '@views/page-home/index'
-import '@views/page-about/index'
-
-import '@/views/page-home/page-home-desktop'
-import '@/views/page-about/page-about-desktop'
+import '@views/page-home/page-home-desktop'
+import '@views/page-converter/page-converter-desktop'
+import '@views/page-converter/page-converter-mobile'
 
 @customElement('main-layout')
 export class MainLayout extends LitElement {
 
     @property({ type: String })
-    page = 'home'
+    main = "home";
 
-    renderPage() {
-        switch (this.page) {
-        case 'about':
-            return html`<page-about-desktop></page-about-desktop>`;
+    renderMain() {
+        switch (this.main) {
+        case 'converter':
+            return html`<page-converter-desktop></page-converter-desktop>`;
         case 'home':
-            default:
+        default:
             return html`<page-home-desktop></page-home-desktop>`;
         }
     }
@@ -31,15 +30,17 @@ export class MainLayout extends LitElement {
     render() {
         return html`
             <div class='layout'>
-                <div class='layout__menu'>
+                <div class='layout__menu menu'>
                     <horizontal-menu></horizontal-menu>
                 </div>
-                <div>
-                    <main class='layout__body'>
-                        ${this.renderPage()}
+                <div class='layout__body body'>
+                    <div class='layout__body--nav nav'>
+                        <vertical-menu></vertical-menu>
+                    </div>
+                    <main class='layout__body--main main'>
+                        ${this.renderMain()}
                     </main>
-                </div>
-                
+                </div>     
             </div>
         `
     }
@@ -52,11 +53,17 @@ export class MainLayout extends LitElement {
                 padding: 0;
             }
 
-            /* .layout {
+            .layout {
                 display: inline-block;
-                padding: 1rem 2rem;
-                background-color: #424242;
-            } */
+                padding: .5rem;
+                /* background-color: #424242; */
+            }
+
+            .body {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
 
 
         `

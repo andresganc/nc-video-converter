@@ -10,18 +10,26 @@ import '@layouts/main-layout'
 export class MainRouter extends LitElement {
 
     private router = new Router(this, [
+
         {
         path: '/',
-        render: () => html`<main-layout page="home"></main-layout>`,
+        render: () => html`<home-layout page="home"></home-layout>`,
         },
+
         {
         path: '/about',
         render: () => html`<home-layout page="about"></home-layout>`,
         },
+
         {
-        path: '/components/:name',
+        path: '/main/converter',
+        render: () => html`<main-layout page="converter"></main-layout>`,
+        },
+
+        {
+        path: '/main/:name',
         render: ({ params }) =>
-            html`<components-layout component=${params.name}></components-layout>`,
+            html`<main-layout component=${params.name}></main-layout>`,
         },
     ]);
 
