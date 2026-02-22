@@ -12,7 +12,11 @@ export class PageHomeDesktop extends LitElement {
 
     render() {
         return html`
-                <p>Page home desktop</p>
+                <div>
+                    <section-home-header-desk></section-home-header-desk>
+                    <section-home-body-desk></section-home-body-desk>
+                    <section-home-footer-desk></section-home-footer-desk>
+                </div>
         `
     }
 }

@@ -56,6 +56,12 @@ export class MainLayout extends LitElement {
 
             .layout {
                 display: flex;
+                gap: 1rem;
+                border-style: solid;
+                border-width: 0.1rem;
+                border-radius: 1rem;
+                border-color: #424242;
+                padding: 2rem;
             }
 
             /* .nav {
@@ -63,11 +69,11 @@ export class MainLayout extends LitElement {
                 padding: .5rem;
             } */
 
-            /* .main {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-            } */
+            .main {
+                background-color: #424242;
+                border-radius: 1rem;
+                padding: .5rem;
+            }
 
 
         `

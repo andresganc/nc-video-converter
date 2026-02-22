@@ -5,7 +5,6 @@ import { Router } from '@lit-labs/router'
 
 // LAYOUTS
 import '@layouts/main-layout'
-import '@layouts/home-layout'
 
 @customElement('main-router')
 export class MainRouter extends LitElement {

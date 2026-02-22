@@ -1,6 +1,7 @@
 
 import { LitElement, css, html} from 'lit'
 import { customElement } from 'lit/decorators.js'
+import logo from '@assets/img/logo/logo300px.webp'
 
 @customElement('vertical-menu')
 export class VerticalMenu extends LitElement {
@@ -10,6 +11,9 @@ export class VerticalMenu extends LitElement {
             <div class='menu'>
 
                 <div class='menu__home'>
+                    <div>
+                        <img class='logo' src="${logo}" alt="Logo" width="70">
+                    </div>
                     <div>
                         <h3>NC VIDEO CONVERTER</h3>
                     </div>
@@ -115,6 +119,10 @@ export class VerticalMenu extends LitElement {
                 cursor: pointer;
             }
 
+            .logo {
+                border-radius: 50%;
+            }
+
             .icon {
                 width: 1.8rem;
                 fill: #e1e1e1;
@@ -138,7 +146,7 @@ export class VerticalMenu extends LitElement {
                 justify-content: space-between;
                 align-items: center;
                 padding: .5rem;
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
             .menu__title {
