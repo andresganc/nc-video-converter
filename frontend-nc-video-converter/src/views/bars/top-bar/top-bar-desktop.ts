@@ -3,85 +3,66 @@ import { LitElement, css, html} from 'lit'
 import { customElement } from 'lit/decorators.js'
 import logo from '@assets/img/logo/logo300px.webp'
 
-@customElement('vertical-menu')
-export class VerticalMenu extends LitElement {
+@customElement('top-bar-desktop')
+export class TopBarDesktop extends LitElement {
 
     render() {
         return html`
             <div class='menu'>
 
                 <div class='menu__home'>
-                    <div>
+                    <!-- <div>
                         <img class='logo' src="${logo}" alt="Logo" width="70">
-                    </div>
+                    </div> -->
                     <div>
-                        <h3>NC VIDEO CONVERTER</h3>
-                    </div>
-                    <div>
-                        <p>version: 0.1 beta</p>
+                        <h3>NC</h3>
                     </div>
                 </div>
 
                 <div class='menu__nav'>
-                    <nav class='menu__nav--nav'>
-                        <a class='menu__nav--nav--item item' href='/'>
-                            <div class='menu__nav--nav--item--cicon c-icon'>
-                                <svg class="icon" viewBox="0 0 24 24"><title>home</title><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg>
-                            </div>
-                            <div class='menu__nav--nav--item--ctitle c-title'><p>HOME</p></div>
-                        </a>
+                    <nav class='menu__nav--nav nav'>
 
                         <a class='menu__nav--nav--item item' href='/videos'>
                             <div>
                                 <svg class="icon" viewBox="0 0 24 24"><title>videos</title><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" /></svg>
                             </div>
-                            <div><p>VIDEOS</p></div>
                         </a>
 
                         <a class='menu__nav--nav--item item' href='/converter'>
                             <div>
                                 <svg class="icon" viewBox="0 0 24 24"><title>video-converter</title><path d="M13,15.5V13H7V15.5L3.5,12L7,8.5V11H13V8.5L16.5,12M18,9.5V6A1,1 0 0,0 17,5H3A1,1 0 0,0 2,6V18A1,1 0 0,0 3,19H17A1,1 0 0,0 18,18V14.5L22,18.5V5.5L18,9.5Z" /></svg>
                             </div>
-                            <div><p>CONVERTER</p></div>
                         </a>
 
                         <a class='menu__nav--nav--item item' href='/finished'>
                             <div>
                                 <svg class="icon" viewBox="0 0 24 24"><title>video-check</title><path d="M17 10.5V7C17 6.45 16.55 6 16 6H4C3.45 6 3 6.45 3 7V17C3 17.55 3.45 18 4 18H16C16.55 18 17 17.55 17 17V13.5L21 17.5V6.5L17 10.5M8.93 15L6 11.8L7.24 10.56L8.93 12.26L12.76 8.43L14 9.93L8.93 15Z" /></svg>
                             </div>
-                            <div><p>FINISHED</p></div>
                         </a>
 
                         <a class='menu__nav--nav--item item' href='/about'>
                             <div>
-                                <svg class="icon" viewBox="0 0 24 24"><title>about</title><path d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>
+                                <svg class="icon" viewBox="0 0 24 24"><title>menu</title><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
                             </div>
-                            <div><p>ABOUT</p></div>
                         </a>
                     </nav>
-                </div>
 
-                <div class='menu__footer'>
-                    <a class='menu__footer--item fitem'>
-                        <div>
-                            <svg class="ficon" viewBox="0 0 24 24"><title>Notifications</title><path d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21" /></svg>
-                        </div>
-                        <!-- <div><small>Notifications</small></div> -->
-                    </a>
+                    <hr class="l-vertical" />
 
-                    <a class='menu__footer--item fitem'>
-                        <div>
-                            <svg class="ficon" viewBox="0 0 24 24"><title>Status</title><path d="M8,2H16V22H8V2M10,4V7H14V4H10Z" /></svg>
-                        </div>
-                        <!-- <div><small>Status</small></div> -->
-                    </a>
+                    <div class='menu__footer'>
+                        <a class='menu__footer--item fitem'>
+                            <div>
+                                <svg class="ficon" viewBox="0 0 24 24"><title>responsive</title><path d="M4,6V16H9V12A2,2 0 0,1 11,10H16A2,2 0 0,1 18,12V16H20V6H4M0,20V18H4A2,2 0 0,1 2,16V6A2,2 0 0,1 4,4H20A2,2 0 0,1 22,6V16A2,2 0 0,1 20,18H24V20H18V20C18,21.11 17.1,22 16,22H11A2,2 0 0,1 9,20H9L0,20M11.5,20A0.5,0.5 0 0,0 11,20.5A0.5,0.5 0 0,0 11.5,21A0.5,0.5 0 0,0 12,20.5A0.5,0.5 0 0,0 11.5,20M15.5,20A0.5,0.5 0 0,0 15,20.5A0.5,0.5 0 0,0 15.5,21A0.5,0.5 0 0,0 16,20.5A0.5,0.5 0 0,0 15.5,20M13,20V21H14V20H13M11,12V19H16V12H11Z" /></svg>
+                            </div>
+                        </a>
 
-                    <a class='menu__footer--item fitem'>
-                        <div>
-                            <svg class="ficon" viewBox="0 0 24 24"><title>Help</title><path d="M11,18H13V16H11V18M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3Z" /></svg>
-                        </div>
-                        <!-- <div><small>Help</small></div> -->
-                    </a>
+                        <a class='menu__footer--item fitem'>
+                            <div>
+                                <svg class="ficon" viewBox="0 0 24 24"><title>close-circle</title><path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" /></svg>
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
 
             </div>
@@ -92,8 +73,7 @@ export class VerticalMenu extends LitElement {
     static get styles() {
         return css`
             :host {
-                display: inline-block;
-                margin: 0 auto;
+                margin: 0;
                 padding: .5rem;
                 text-align: center;
             }
@@ -119,6 +99,12 @@ export class VerticalMenu extends LitElement {
                 cursor: pointer;
             }
 
+            .l-vertical {
+                width: 1px;
+                height: 1.5rem;
+                background-color: #ccc;
+            }
+
             .logo {
                 border-radius: 50%;
             }
@@ -129,7 +115,7 @@ export class VerticalMenu extends LitElement {
             }
 
             .ficon {
-                width: 1.5rem;
+                width: 1.8rem;
                 fill: #e1e1e1;
             }
 
@@ -142,24 +128,31 @@ export class VerticalMenu extends LitElement {
             }
 
             .menu {
-                display: grid;
-                justify-content: space-between;
+                display: flex;
+                justify-content: space-around;
                 align-items: center;
                 padding: .5rem;
-                gap: 1.5rem;
+            }
+
+            .menu__home {
+                display: flex;
             }
 
             .menu__title {
-                display: inline-block
+                display: inline-block;
             }
 
             .menu__nav {
-                display: inline-block 
+                display: flex;
+                justify-content: space-around;
+                justify-content: center;
+                align-items: center;  
             }
 
-            .menu__nav--nav {
-                display: inline-block;
-                justify-content: space-between;
+            .nav {
+                display: flex;
+                justify-content: space-around;
+                justify-content: center;
                 align-items: center;                
             }
 

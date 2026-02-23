@@ -2,8 +2,11 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
 
+// BARS
+import '@/views/bars/top-bar/top-bar-desktop'
+
 // MENUS
-import '@views/menus/vertical-menu'
+import '@/views/menus/vertical-menu/vertical-menu-desktop'
 
 // PAGES
 import '@views/page-home/index'
@@ -37,11 +40,17 @@ export class MainLayout extends LitElement {
     render() {
         return html`
             <div class='layout'>
-                <div class='layout__nav nav'>
-                    <vertical-menu></vertical-menu>
+                <div class='layout__bar bar'>
+                    <top-bar-desktop></top-bar-desktop>
                 </div>
+                
                 <main class='layout__main main'>
+                    <div class='layout__main--nav nav'>
+                        <vertical-menu></vertical-menu>
+                    </div>
+                    <div class='layout__main--content content'>
                         ${this.renderMain()}
+                    </div>
                 </main>    
             </div>
         `
@@ -55,7 +64,6 @@ export class MainLayout extends LitElement {
             }
 
             .layout {
-                display: flex;
                 gap: 1rem;
                 border-style: solid;
                 border-width: 0.1rem;
@@ -64,15 +72,24 @@ export class MainLayout extends LitElement {
                 padding: 2rem;
             }
 
-            /* .nav {
-                display: inline-block;
-                padding: .5rem;
-            } */
-
-            .main {
+            .bar {
                 background-color: #424242;
                 border-radius: 1rem;
+                margin: .5rem 0;
                 padding: .5rem;
+                
+            }
+
+            .main {
+                display: flex;
+                border-radius: 1rem;
+                padding: .5rem;
+            }
+
+            .content {
+                border-radius: 1rem;
+                padding: .5rem;
+                background-color: #424242;
             }
 
 
