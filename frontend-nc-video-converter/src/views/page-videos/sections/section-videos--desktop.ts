@@ -1,9 +1,44 @@
 
 import { LitElement, css, html } from 'lit'
-import { customElement } from 'lit/decorators.js'
+import { customElement, state } from 'lit/decorators.js'
+
+interface VideoFile {
+  file: File;
+  url: string;
+}
 
 @customElement('section-videos-desktop')
 export class SectionVideosDesktop extends LitElement {
+
+    @state() videos: VideoFile[] = [];
+
+    handleFolderSelect(e: Event) {
+        const input = e.target as HTMLInputElement;
+        if (!input.files) return;
+
+        this.videos = Array.from(input.files)
+        .filter(file => file.type.startsWith('video/'))
+        .map(file => ({
+            file,
+            url: URL.createObjectURL(file),
+        }));
+    }
+
+    async uploadFiles() {
+        const formData = new FormData();
+        this.videos.forEach(v => {
+        formData.append('videos', v.file);
+        });
+
+        const res = await fetch('http://localhost:3000/upload', {
+        method: 'POST',
+        body: formData,
+        });
+
+        const result = await res.json();
+        console.log('📦 Backend recibió:', result);
+    }
+
 
     render() {
         return html`
@@ -22,14 +57,20 @@ export class SectionVideosDesktop extends LitElement {
                         </div>
 
                         <div>
-                            <input class='search-input' type="text" placeholder="Search folder videos..." />
+                            <input class='search-input' type="file" multiple @change=${this.handleFolderSelect} placeholder="Search folder videos..." />
+                            <!-- <input class='search-input' type="file" webkitdirectory multiple @change=${this.handleFolderSelect} placeholder="Search folder videos..." /> -->
                         </div>
 
                         <div class='menu__footer--item fitem'>
-                            <div>
-                                <svg class="icon" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
-                            </div>
-                            <!-- <div><small>Add Video</small></div> -->
+                            <a @click=${this.uploadFiles}>
+                                <div>
+                                    <svg class="icon" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
+                                </div>
+                                
+                            </a>
+                            <!-- <button @click=${this.uploadFiles}>
+                                Subir videos
+                            </button> -->
                         </div>
                     </div>
                     
@@ -38,20 +79,47 @@ export class SectionVideosDesktop extends LitElement {
                     
                 <div class="section__body body">
                     <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Size</th>
-                            <th>Duration</th>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>Vista previa</th>
+                                <th>Nombre</th>
+                                <th>Tamaño (MB)</th>
+                                <th>Formato</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            ${this.videos.map(v => html`
+                                <tr>
+                                    <td>
+                                        <video src=${v.url} muted></video>
+                                    </td>
+                                    <td>${v.file.name}</td>
+                                    <td>${(v.file.size / 1024 / 1024).toFixed(2)}</td>
+                                    <td>${v.file.type}</td>
+                                </tr>
+                            `)}
+                        </tbody>
+                        
                     </table>
                 </div>
 
                 <div class="section__footer">
                     <div class="section__footer--infoleft infoleft">
-                        <p>Nombre: </p>
-                        <p>Tipo: </p>
-                        <p>Empaquetado: </p>
-                        <p>Formato: </p>
+                        ${this.videos.map(v => html`
+                            <div class="video-info">
+                                <p>Nombre: </p> <p>${v.file.name}</p>
+                            </div>
+                            <div class="video-info">
+                                <p>Tamaño: </p> <p>${(v.file.size / 1024 / 1024).toFixed(2)}</p>
+                            </div>
+                            <div class="video-info">
+                                <p>Formato: </p> <p>${v.file.type}</p>
+                            </div>
+                            <div class="video-info">
+                                <p>Ultima modificación: </p> <p>${new Date(v.file.lastModified).toLocaleDateString()}</p>
+                            </div>
+                        `)}
                     </div>
 
                     <hr class="l-vertical" />
@@ -77,7 +145,7 @@ export class SectionVideosDesktop extends LitElement {
                 /* GENERALES */
 
                 p {
-                    font-size: 0.8rem;
+                    font-size: 0.9rem;
                 }
 
                 .icon {
@@ -136,6 +204,19 @@ export class SectionVideosDesktop extends LitElement {
                     border-color: #242424;
                 }
 
+                /* Table*/
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    padding: 8px;
+                    border-bottom: 1px solid #ccc;
+                }
+                video {
+                    width: 120px;
+                }
+
                 /* FOOTER */
                 .section__footer {
                     display: flex;
@@ -151,12 +232,18 @@ export class SectionVideosDesktop extends LitElement {
                 }
 
                 .infoleft {
+                    display: grid;
                     /* background-color: yellow; */
                 }
 
                 .inforight {
                     text-align: left;
                     /* background-color: violet; */
+                }
+
+                .video-info {
+                    display: flex;
+                    gap: 1rem;
                 }
 
             `
