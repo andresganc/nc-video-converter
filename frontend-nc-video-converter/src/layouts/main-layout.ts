@@ -4,6 +4,7 @@ import { customElement, property } from 'lit/decorators.js'
 
 // BARS
 import '@/views/bars/top-bar/top-bar-desktop'
+import '@views/bars/bottom-bar/bottom-bar-desktop'
 
 // MENUS
 import '@/views/menus/vertical-menu/vertical-menu-desktop'
@@ -40,7 +41,7 @@ export class MainLayout extends LitElement {
     render() {
         return html`
             <div class='layout'>
-                <div class='layout__bar bar'>
+                <div class='layout__topbar topbar'>
                     <top-bar-desktop></top-bar-desktop>
                 </div>
                 
@@ -51,7 +52,11 @@ export class MainLayout extends LitElement {
                     <div class='layout__main--content content'>
                         ${this.renderMain()}
                     </div>
-                </main>    
+                </main>
+                
+                <div class='layout__bottombar bottombar'>
+                    <bottom-bar-desktop></bottom-bar-desktop>
+                </div>
             </div>
         `
     }
@@ -69,10 +74,10 @@ export class MainLayout extends LitElement {
                 border-width: 0.1rem;
                 border-radius: 1rem;
                 border-color: #424242;
-                padding: 2rem;
+                padding: 1rem 2.5rem;
             }
 
-            .bar {
+            .topbar {
                 background-color: #424242;
                 border-radius: .5rem;
                 margin: .5rem 0;
@@ -90,6 +95,13 @@ export class MainLayout extends LitElement {
                 border-radius: 1rem;
                 padding: .5rem;
                 background-color: #424242;
+            }
+
+            .bottombar {
+                background-color: #424242;
+                border-radius: .5rem;
+                margin: .5rem 0;
+                padding: .5rem;
             }
 
 
