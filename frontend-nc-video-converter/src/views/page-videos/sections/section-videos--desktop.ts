@@ -7,24 +7,158 @@ export class SectionVideosDesktop extends LitElement {
 
     render() {
         return html`
-                <div class="header">
-                    <div class="header-navleft">
-                        <a class='menu__footer--item fitem'>
+            <div class="section">
+                <div class="section__header">
+                    <div class='section__header--title title'>
+                        <h4>Search folder videos</h4>                      
+                    </div>
+
+                    <div class='section__header--actions actions'>
+                        <div class='menu__footer--item fitem'>
                             <div>
-                                <svg class="ficon" viewBox="0 0 24 24"><title>Notifications</title><path d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21" /></svg>
+                                <svg class="icon" viewBox="0 0 24 24"><title>folder-search</title><path d="M16.5,12C19,12 21,14 21,16.5C21,17.38 20.75,18.21 20.31,18.9L23.39,22L22,23.39L18.88,20.32C18.19,20.75 17.37,21 16.5,21C14,21 12,19 12,16.5C12,14 14,12 16.5,12M16.5,14A2.5,2.5 0 0,0 14,16.5A2.5,2.5 0 0,0 16.5,19A2.5,2.5 0 0,0 19,16.5A2.5,2.5 0 0,0 16.5,14M9,4L11,6H19A2,2 0 0,1 21,8V11.81C19.83,10.69 18.25,10 16.5,10A6.5,6.5 0 0,0 10,16.5C10,17.79 10.37,19 11,20H3C1.89,20 1,19.1 1,18V6C1,4.89 1.89,4 3,4H9Z" /></svg>
                             </div>
                             <!-- <div><small>Notifications</small></div> -->
-                        </a>
+                        </div>
+
+                        <div>
+                            <input class='search-input' type="text" placeholder="Search folder videos..." />
+                        </div>
+
+                        <div class='menu__footer--item fitem'>
+                            <div>
+                                <svg class="icon" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
+                            </div>
+                            <!-- <div><small>Add Video</small></div> -->
+                        </div>
                     </div>
                     
-                    <div class="header-navright">
+                </div>
+                
+                    
+                <div class="section__body body">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Size</th>
+                            <th>Duration</th>
+                        </tr>
+                    </table>
+                </div>
 
+                <div class="section__footer">
+                    <div class="section__footer--infoleft infoleft">
+                        <p>Nombre: </p>
+                        <p>Tipo: </p>
+                        <p>Empaquetado: </p>
+                        <p>Formato: </p>
                     </div>
 
-                    <div>
+                    <hr class="l-vertical" />
 
+                    <div class="section__footer--inforight inforight">
+                        <p>Resolucion: </p>
+                        <p>FPS: </p>
+                        <p>Lut: </p>
+                        <p>Otro: </p>
                     </div>
                 </div>
+            </div>
         `
+    }
+
+    static get styles() {
+            return css`
+                :host {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                /* GENERALES */
+
+                p {
+                    font-size: 0.8rem;
+                }
+
+                .icon {
+                    width: 1.5rem;
+                    fill: #e1e1e1;
+                }
+
+                .section {
+                    display: grid;
+                    gap: 1rem;
+                }
+
+                .l-vertical {
+                    width: .2px;
+                    height: 3rem;
+                    background-color: #ccc;
+                }
+
+
+                /* HEADER */
+                .section__header {
+                    display: block;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center; 
+                }
+
+                .actions {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+
+                .search-input {
+                    padding: 0.5rem;
+                    border-radius: 0.5rem;
+                    border: none;
+                    background-color: #242424;
+                    color: #e1e1e1;
+                }
+
+                /* BODY */
+                .section__body {
+                    display: block;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center; 
+                    width: 45rem;
+                    height: 15rem;
+                    padding: 1rem;
+
+                    border-style: solid;
+                    border-width: 0.1rem;
+                    border-radius: 1rem;
+                    border-color: #242424;
+                }
+
+                /* FOOTER */
+                .section__footer {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: .3rem 1rem;
+                    gap: 0.5rem;
+
+                    border-style: solid;
+                    border-width: 0.1rem;
+                    border-radius: 1rem;
+                    border-color: #242424;
+                }
+
+                .infoleft {
+                    /* background-color: yellow; */
+                }
+
+                .inforight {
+                    text-align: left;
+                    /* background-color: violet; */
+                }
+
+            `
     }
 }

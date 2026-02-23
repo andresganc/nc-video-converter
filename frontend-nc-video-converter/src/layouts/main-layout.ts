@@ -89,11 +89,12 @@ export class MainLayout extends LitElement {
                 display: flex;
                 border-radius: .5rem;
                 padding: .5rem;
+                gap: 1rem;
             }
 
             .content {
                 border-radius: 1rem;
-                padding: .5rem;
+                padding: 0 1.5rem;
                 background-color: #424242;
             }
 

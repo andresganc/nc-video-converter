@@ -14,7 +14,7 @@ export class BottomBarDesktop extends LitElement {
                     <!-- <div>
                         <img class='logo' src="${logo}" alt="Logo" width="70">
                     </div> -->
-                    <small>nc video converter</small>
+                    <small>Video selected: none</small>
                 </div>
 
                 <!-- <hr class="l-vertical" /> -->
@@ -23,7 +23,7 @@ export class BottomBarDesktop extends LitElement {
                     <nav class='menu__nav--nav nav'>
 
                         <a class='menu__nav--nav--item item' href='/finished'>
-                            <small>Status: normal</small>
+                            <small>Status: waiting for video</small>
                         </a>
                     </nav>
                 </div>

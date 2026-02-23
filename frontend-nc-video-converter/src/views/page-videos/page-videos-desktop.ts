@@ -4,14 +4,13 @@ import { customElement } from 'lit/decorators.js'
 
 // SECTIONS
 import './sections/section-videos--desktop'
-import './sections/section-videos-mobile'
 
 @customElement('page-videos-desktop')
 export class PageVideosDesktop extends LitElement {
 
     render() {
         return html`
-                <p>Page videos desktop</p>
+            <section-videos-desktop></section-videos-desktop>
         `
     }
 }
