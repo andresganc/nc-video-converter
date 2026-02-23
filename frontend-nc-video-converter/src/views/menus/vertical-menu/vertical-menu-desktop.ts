@@ -132,14 +132,6 @@ export class VerticalMenu extends LitElement {
                 fill: #e1e1e1;
             }
 
-            ul {
-                text-align: center;
-                list-style: none;
-                margin: 0 0.3rem;
-                padding: 0.2rem 0.8rem;
-                border-radius: 0.5rem;
-            }
-
             .menu {
                 display: grid;
                 justify-content: space-between;

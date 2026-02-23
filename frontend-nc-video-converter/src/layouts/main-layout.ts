@@ -74,7 +74,7 @@ export class MainLayout extends LitElement {
 
             .bar {
                 background-color: #424242;
-                border-radius: 1rem;
+                border-radius: .5rem;
                 margin: .5rem 0;
                 padding: .5rem;
                 
@@ -82,7 +82,7 @@ export class MainLayout extends LitElement {
 
             .main {
                 display: flex;
-                border-radius: 1rem;
+                border-radius: .5rem;
                 padding: .5rem;
             }
 

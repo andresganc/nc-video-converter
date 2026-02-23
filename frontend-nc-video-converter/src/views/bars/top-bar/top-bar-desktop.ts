@@ -22,21 +22,9 @@ export class TopBarDesktop extends LitElement {
                 <div class='menu__nav'>
                     <nav class='menu__nav--nav nav'>
 
-                        <a class='menu__nav--nav--item item' href='/videos'>
-                            <div>
-                                <svg class="icon" viewBox="0 0 24 24"><title>videos</title><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" /></svg>
-                            </div>
-                        </a>
-
-                        <a class='menu__nav--nav--item item' href='/converter'>
-                            <div>
-                                <svg class="icon" viewBox="0 0 24 24"><title>video-converter</title><path d="M13,15.5V13H7V15.5L3.5,12L7,8.5V11H13V8.5L16.5,12M18,9.5V6A1,1 0 0,0 17,5H3A1,1 0 0,0 2,6V18A1,1 0 0,0 3,19H17A1,1 0 0,0 18,18V14.5L22,18.5V5.5L18,9.5Z" /></svg>
-                            </div>
-                        </a>
-
                         <a class='menu__nav--nav--item item' href='/finished'>
                             <div>
-                                <svg class="icon" viewBox="0 0 24 24"><title>video-check</title><path d="M17 10.5V7C17 6.45 16.55 6 16 6H4C3.45 6 3 6.45 3 7V17C3 17.55 3.45 18 4 18H16C16.55 18 17 17.55 17 17V13.5L21 17.5V6.5L17 10.5M8.93 15L6 11.8L7.24 10.56L8.93 12.26L12.76 8.43L14 9.93L8.93 15Z" /></svg>
+                                <svg class="icon" viewBox="0 0 24 24"><title>gift</title><path d="M9.06,1.93C7.17,1.92 5.33,3.74 6.17,6H3A2,2 0 0,0 1,8V10A1,1 0 0,0 2,11H11V8H13V11H22A1,1 0 0,0 23,10V8A2,2 0 0,0 21,6H17.83C19,2.73 14.6,0.42 12.57,3.24L12,4L11.43,3.22C10.8,2.33 9.93,1.94 9.06,1.93M9,4C9.89,4 10.34,5.08 9.71,5.71C9.08,6.34 8,5.89 8,5A1,1 0 0,1 9,4M15,4C15.89,4 16.34,5.08 15.71,5.71C15.08,6.34 14,5.89 14,5A1,1 0 0,1 15,4M2,12V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V12H13V20H11V12H2Z" /></svg>
                             </div>
                         </a>
 
@@ -74,8 +62,7 @@ export class TopBarDesktop extends LitElement {
         return css`
             :host {
                 margin: 0;
-                padding: .5rem;
-                text-align: center;
+                padding: 0;
             }
 
             a {
@@ -110,7 +97,7 @@ export class TopBarDesktop extends LitElement {
             }
 
             .icon {
-                width: 1.8rem;
+                width: 1.5rem;
                 fill: #e1e1e1;
             }
 
@@ -119,41 +106,30 @@ export class TopBarDesktop extends LitElement {
                 fill: #e1e1e1;
             }
 
-            ul {
-                text-align: center;
-                list-style: none;
-                margin: 0 0.3rem;
-                padding: 0.2rem 0.8rem;
-                border-radius: 0.5rem;
-            }
-
             .menu {
                 display: flex;
-                justify-content: space-around;
+                justify-content: space-between;
                 align-items: center;
-                padding: .5rem;
+                padding: .8rem;
+                height: 1.5rem;
             }
 
             .menu__home {
                 display: flex;
             }
 
-            .menu__title {
-                display: inline-block;
-            }
-
             .menu__nav {
                 display: flex;
-                justify-content: space-around;
-                justify-content: center;
+                justify-content: space-between;
+                /* justify-content: center; */
                 align-items: center;  
             }
 
             .nav {
                 display: flex;
-                justify-content: space-around;
+                /* justify-content: space-between; */
                 justify-content: center;
-                align-items: center;                
+                align-items: center;
             }
 
             .item {
