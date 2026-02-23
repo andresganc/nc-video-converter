@@ -45,7 +45,7 @@ export class SectionVideosDesktop extends LitElement {
             <div class="section">
                 <div class="section__header">
                     <div class='section__header--title title'>
-                        <h4>Search folder videos</h4>                      
+                        <h4>Search video</h4>                      
                     </div>
 
                     <div class='section__header--actions actions'>
@@ -194,8 +194,8 @@ export class SectionVideosDesktop extends LitElement {
                     justify-content: center;
                     align-items: center;
                     text-align: center; 
-                    width: 45rem;
-                    height: 15rem;
+                    /* width: 45rem;
+                    height: 15rem; */
                     padding: 1rem;
 
                     border-style: solid;
