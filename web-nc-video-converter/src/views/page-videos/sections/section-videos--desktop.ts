@@ -57,7 +57,7 @@ export class SectionVideosDesktop extends LitElement {
                         </div>
 
                         <div>
-                            <input class='search-input' type="file" multiple @change=${this.handleFolderSelect} placeholder="Search folder videos..." />
+                            <input class='search-input' type="file" @change=${this.handleFolderSelect} placeholder="Search folder videos..." />
                             <!-- <input class='search-input' type="file" webkitdirectory multiple @change=${this.handleFolderSelect} placeholder="Search folder videos..." /> -->
                         </div>
 
@@ -68,9 +68,9 @@ export class SectionVideosDesktop extends LitElement {
                                 </div>
                                 
                             </a>
-                            <!-- <button @click=${this.uploadFiles}>
+                            <button @click=${this.uploadFiles}>
                                 Subir videos
-                            </button> -->
+                            </button>
                         </div>
                     </div>
                     
