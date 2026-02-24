@@ -1,0 +1,23 @@
+{
+  "name": "desktop-nc-video-converter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@lit-labs/router": "^0.1.4",
+    "busboy": "^1.6.0",
+    "lit": "^3.3.1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.10.0",
+    "@types/node": "^25.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1"
+  }
+}
