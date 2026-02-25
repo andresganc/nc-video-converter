@@ -1,6 +1,7 @@
 
 import { LitElement, css, html } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
+import 'media-chrome';
 
 interface VideoFile {
   file: File;
@@ -10,21 +11,10 @@ interface VideoFile {
 //   mime: string;
 }
 
-interface UploadedFile {
-  url: string;
-  file: File;  
-  filename: string;
-  size: number;
-  mime: string;
-}
-
 @customElement('section-videos-desktop')
 export class SectionVideosDesktop extends LitElement {
 
     @state() videos: VideoFile[] = [];
-    
-    @state() files: UploadedFile[] = [];
-
 
     handleFolderSelect(e: Event) {
         const input = e.target as HTMLInputElement;
@@ -53,29 +43,7 @@ export class SectionVideosDesktop extends LitElement {
         console.log('📦 Backend recibió:', result);
     }
 
-    // async handleFolderSelect(e: Event) {
-    //     const input = e.target as HTMLInputElement;
-    //     if (!input.files) return;
-
-    //     const formData = new FormData();
-
-    //     Array.from(input.files)
-    //     .filter(f => f.type.startsWith('video/'))
-    //     .forEach(file => {
-    //         formData.append('file', file);
-    //         url: URL.createObjectURL(file);
-    //     });
-
-    //     const res = await fetch('http://localhost:3000/upload', {
-    //     method: 'POST',
-    //     body: formData,
-    //     });
-
-    //     const data = await res.json();
-    //     this.files = data;
-    // }
-
-
+    
     render() {
         return html`
             <div class="section">
@@ -101,7 +69,7 @@ export class SectionVideosDesktop extends LitElement {
                 
                     
                 <div class="section__body body">
-                    <table>
+                    <!-- <table>
                         <thead>
                             <tr>
                                 <th>Vista previa</th>
@@ -124,30 +92,25 @@ export class SectionVideosDesktop extends LitElement {
                             `)}
                         </tbody>
                         
-                    </table>
-
-                    <!-- <table>
-                        <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Tamaño (MB)</th>
-                            <th>Formato</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        ${this.files.map(file => html`
-                            <tr>
-                            <td>
-                                <video src=${file.url} muted></video>
-                            </td>    
-                            <td>${file.filename}</td>
-                            <td>${(file.size / 1024 / 1024).toFixed(2)}</td>
-                            <td>${file.mime}</td>
-                            </tr>
-                        `)}
-                        </tbody>
                     </table> -->
+
+                    <media-controller>
+                        ${this.videos.map(v => html`
+                            <video
+                                slot="media"
+                                src=${v.url} >
+                            </video>
+                        `)}
+                        <media-control-bar>
+                            <media-play-button></media-play-button>
+                            <media-mute-button></media-mute-button>
+                            <media-volume-range></media-volume-range>
+                            <media-time-range></media-time-range>
+                            <media-pip-button></media-pip-button>
+                            <media-fullscreen-button></media-fullscreen-button>
+                        </media-control-bar>
+                    </media-controller>
+
 
                 </div>
 
@@ -262,8 +225,8 @@ export class SectionVideosDesktop extends LitElement {
                     justify-content: center;
                     align-items: center;
                     text-align: center; 
-                    /* width: 45rem;
-                    height: 15rem; */
+                    width: 45rem;
+                    height: 20rem;
                     padding: 1rem;
 
                     border-style: solid;
@@ -272,7 +235,7 @@ export class SectionVideosDesktop extends LitElement {
                     border-color: #242424;
                 }
 
-                /* Table*/
+                /* TABLE */
                 table {
                     width: 100%;
                     border-collapse: collapse;
@@ -284,6 +247,18 @@ export class SectionVideosDesktop extends LitElement {
                 }
                 video {
                     width: 120px;
+                }
+
+                /* VIDEO PLAYER */
+                media-controller {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: .5rem;
+                }
+
+                video {
+                    width: 100%;
+                    height: 100%;
                 }
 
                 /* FOOTER */
