@@ -25,29 +25,6 @@ export class SectionVideosDesktop extends LitElement {
     
     @state() files: UploadedFile[] = [];
 
-    
-
-    // async handleFolderSelect(e: Event) {
-    //     const input = e.target as HTMLInputElement;
-    //     if (!input.files) return;
-
-    //     const formData = new FormData();
-
-    //     Array.from(input.files)
-    //     .filter(f => f.type.startsWith('video/'))
-    //     .forEach(file => {
-    //         formData.append('file', file);
-    //         url: URL.createObjectURL(file);
-    //     });
-
-    //     const res = await fetch('http://localhost:3000/upload', {
-    //     method: 'POST',
-    //     body: formData,
-    //     });
-
-    //     const data = await res.json();
-    //     this.files = data;
-    // }
 
     handleFolderSelect(e: Event) {
         const input = e.target as HTMLInputElement;
@@ -76,6 +53,28 @@ export class SectionVideosDesktop extends LitElement {
         console.log('📦 Backend recibió:', result);
     }
 
+    // async handleFolderSelect(e: Event) {
+    //     const input = e.target as HTMLInputElement;
+    //     if (!input.files) return;
+
+    //     const formData = new FormData();
+
+    //     Array.from(input.files)
+    //     .filter(f => f.type.startsWith('video/'))
+    //     .forEach(file => {
+    //         formData.append('file', file);
+    //         url: URL.createObjectURL(file);
+    //     });
+
+    //     const res = await fetch('http://localhost:3000/upload', {
+    //     method: 'POST',
+    //     body: formData,
+    //     });
+
+    //     const data = await res.json();
+    //     this.files = data;
+    // }
+
 
     render() {
         return html`
@@ -90,24 +89,11 @@ export class SectionVideosDesktop extends LitElement {
                             <div>
                                 <svg class="icon" viewBox="0 0 24 24"><title>folder-search</title><path d="M16.5,12C19,12 21,14 21,16.5C21,17.38 20.75,18.21 20.31,18.9L23.39,22L22,23.39L18.88,20.32C18.19,20.75 17.37,21 16.5,21C14,21 12,19 12,16.5C12,14 14,12 16.5,12M16.5,14A2.5,2.5 0 0,0 14,16.5A2.5,2.5 0 0,0 16.5,19A2.5,2.5 0 0,0 19,16.5A2.5,2.5 0 0,0 16.5,14M9,4L11,6H19A2,2 0 0,1 21,8V11.81C19.83,10.69 18.25,10 16.5,10A6.5,6.5 0 0,0 10,16.5C10,17.79 10.37,19 11,20H3C1.89,20 1,19.1 1,18V6C1,4.89 1.89,4 3,4H9Z" /></svg>
                             </div>
-                            <!-- <div><small>Notifications</small></div> -->
                         </div>
 
                         <div>
                             <input class='search-input' type="file" @change=${this.handleFolderSelect} placeholder="Search folder videos..." />
                             <!-- <input class='search-input' type="file" webkitdirectory multiple @change=${this.handleFolderSelect} placeholder="Search folder videos..." /> -->
-                        </div>
-
-                        <div class='menu__footer--item fitem'>
-                            <a @click=${this.uploadFiles}>
-                                <div>
-                                    <svg class="icon" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
-                                </div>
-                                
-                            </a>
-                            <button @click=${this.uploadFiles}>
-                                Subir videos
-                            </button>
                         </div>
                     </div>
                     
@@ -186,11 +172,19 @@ export class SectionVideosDesktop extends LitElement {
                     <hr class="l-vertical" />
 
                     <div class="section__footer--inforight inforight">
-                        <p>Resolucion: </p>
-                        <p>FPS: </p>
-                        <p>Lut: </p>
-                        <p>Otro: </p>
+                        <div>
+                            <a class='a-next-converter' href='/converter' @click=${this.uploadFiles} >
+
+                                <svg class="icon" viewBox="0 0 24 24"><title>video-plus</title><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5M14,13H11V16H9V13H6V11H9V8H11V11H14V13Z" /></svg>
+                                
+                                <p>SELECT TO CONVERT</p>
+                                
+                                <svg class="icon" viewBox="0 0 24 24"><title>chevron-right</title><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+                                
+                            </a>
+                        </div>
                     </div>
+
                 </div>
             </div>
         `
@@ -204,6 +198,19 @@ export class SectionVideosDesktop extends LitElement {
                 }
 
                 /* GENERALES */
+                a {
+                    text-decoration: none;
+                    font-size: 0.8rem;
+                }
+
+                a:link {
+                    color: #d6d6d6;
+                }
+
+                a:visited {
+                    color: #d6d6d6;
+                    text-decoration: none;
+                }
 
                 p {
                     font-size: 0.9rem;
@@ -271,7 +278,8 @@ export class SectionVideosDesktop extends LitElement {
                     border-collapse: collapse;
                 }
                 th, td {
-                    padding: 8px;
+                    font-size: 0.9rem;
+                    padding: 5px;
                     border-bottom: 1px solid #ccc;
                 }
                 video {
@@ -305,6 +313,23 @@ export class SectionVideosDesktop extends LitElement {
                 .video-info {
                     display: flex;
                     gap: 1rem;
+                }
+
+                .a-next-converter{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: .5rem;
+                    gap: 0.5rem;
+
+                    /* display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    padding: 0 .5rem;
+                    border-radius: 0.5rem;
+                    background-color: #242424;
+                    color: #e1e1e1;
+                    text-decoration: none; */
                 }
 
             `
