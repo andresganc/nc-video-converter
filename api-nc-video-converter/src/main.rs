@@ -9,7 +9,7 @@ use axum::{
 use serde::Serialize;
 use std::{net::SocketAddr, path::Path};
 use tokio::{fs::File, io::AsyncWriteExt};
-use tower_http::cors::CorsLayer;
+use tower_http::cors::{CorsLayer, Any};
 use uuid::Uuid;
 
 #[derive(Serialize)]
@@ -20,6 +20,7 @@ struct UploadedFile {
 }
 
 async fn upload(mut multipart: Multipart) -> impl IntoResponse {
+
     let mut uploaded_files = Vec::new();
 
     while let Ok(Some(field)) = multipart.next_field().await {
@@ -56,14 +57,25 @@ async fn upload(mut multipart: Multipart) -> impl IntoResponse {
         });
     }
 
-    Json(uploaded_files)
+    Json(uploaded_files);
+
+    // StatusCode::OK
+
 }
+
 
 #[tokio::main]
 async fn main() {
+
+    let cors = CorsLayer::new()
+        .allow_origin(Any)
+        .allow_methods(Any)
+        .allow_headers(Any);
+
     let app = Router::new()
         .route("/upload", post(upload))
-        .layer(CorsLayer::permissive());
+        .layer(cors);
+        // .layer(CorsLayer::permissive());
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
     println!("🚀 Servidor en http://{}", addr);
@@ -75,4 +87,5 @@ async fn main() {
     )
     .await
     .unwrap();
+
 }

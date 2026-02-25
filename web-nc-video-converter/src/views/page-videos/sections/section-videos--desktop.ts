@@ -5,12 +5,49 @@ import { customElement, state } from 'lit/decorators.js'
 interface VideoFile {
   file: File;
   url: string;
+//   filename: string;
+//   size: number;
+//   mime: string;
+}
+
+interface UploadedFile {
+  url: string;
+  file: File;  
+  filename: string;
+  size: number;
+  mime: string;
 }
 
 @customElement('section-videos-desktop')
 export class SectionVideosDesktop extends LitElement {
 
     @state() videos: VideoFile[] = [];
+    
+    @state() files: UploadedFile[] = [];
+
+    
+
+    // async handleFolderSelect(e: Event) {
+    //     const input = e.target as HTMLInputElement;
+    //     if (!input.files) return;
+
+    //     const formData = new FormData();
+
+    //     Array.from(input.files)
+    //     .filter(f => f.type.startsWith('video/'))
+    //     .forEach(file => {
+    //         formData.append('file', file);
+    //         url: URL.createObjectURL(file);
+    //     });
+
+    //     const res = await fetch('http://localhost:3000/upload', {
+    //     method: 'POST',
+    //     body: formData,
+    //     });
+
+    //     const data = await res.json();
+    //     this.files = data;
+    // }
 
     handleFolderSelect(e: Event) {
         const input = e.target as HTMLInputElement;
@@ -102,6 +139,30 @@ export class SectionVideosDesktop extends LitElement {
                         </tbody>
                         
                     </table>
+
+                    <!-- <table>
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tamaño (MB)</th>
+                            <th>Formato</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        ${this.files.map(file => html`
+                            <tr>
+                            <td>
+                                <video src=${file.url} muted></video>
+                            </td>    
+                            <td>${file.filename}</td>
+                            <td>${(file.size / 1024 / 1024).toFixed(2)}</td>
+                            <td>${file.mime}</td>
+                            </tr>
+                        `)}
+                        </tbody>
+                    </table> -->
+
                 </div>
 
                 <div class="section__footer">
