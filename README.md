@@ -20,9 +20,13 @@
 
 <br><hr>
 
-### Select folder video
+### Select video
 <img src='./architecture/captures/nc-video-converter-videos-01.png'>
 
 <br>
 
 <img src='./architecture/captures/nc-video-converter-videos-02.png'>
+
+<br>
+
+<img src='./architecture/captures/nc-video-converter-videos-03.png'>
