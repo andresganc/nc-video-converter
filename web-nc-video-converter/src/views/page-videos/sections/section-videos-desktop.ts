@@ -1,6 +1,7 @@
 
 import { LitElement, css, html } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
+import { useVideoStore } from '@contexts/store-video-seleted';
 import 'media-chrome';
 
 interface VideoFile {
@@ -16,19 +17,61 @@ export class SectionVideosDesktop extends LitElement {
 
     @state() videos: VideoFile[] = [];
 
+    // handleFolderSelect(e: Event, file:File) {
+
+    //     // ADD FILE TO FRONTEND
+    //     const input = e.target as HTMLInputElement;
+    //     if (!input.files) return;
+
+    //     this.videos = Array.from(input.files)
+    //     .filter(file => file.type.startsWith('video/'))
+    //     .map(file => ({
+    //         file,
+    //         url: URL.createObjectURL(file),
+    //     }));
+
+
+    //     // ADD STATES TO STORE VIDEO SELETED
+    //     useVideoStore.getState().setSelectedVideo({
+    //         name: file.name,
+    //         path: (file as any).path ?? '',
+    //         type: file.type,
+    //         size: file.size,
+    //     });
+
+    //     // navegar a convertidor
+    //     window.location.hash = '#/converter';
+    // }
+
+
     handleFolderSelect(e: Event) {
         const input = e.target as HTMLInputElement;
-        if (!input.files) return;
+        if (!input.files || input.files.length === 0) return;
 
-        this.videos = Array.from(input.files)
-        .filter(file => file.type.startsWith('video/'))
-        .map(file => ({
+        const videoFiles = Array.from(input.files).filter(f => f.type.startsWith('video/'));
+
+        this.videos = videoFiles.map(file => ({
             file,
             url: URL.createObjectURL(file),
         }));
+
+        const file = videoFiles[0];
+        if (!file) return;
+
+        useVideoStore.getState().setSelectedVideo({
+            name: file.name,
+            path: (file as any).path ?? '',
+            type: file.type,
+            size: file.size,
+        });
+
+        // navegar a convertidor
+        window.location.hash = '#/converter';
     }
 
     async uploadFiles() {
+
+        // ADD FILE TO BACKEND
         const formData = new FormData();
         this.videos.forEach(v => {
         formData.append('videos', v.file);
@@ -41,6 +84,7 @@ export class SectionVideosDesktop extends LitElement {
 
         const result = await res.json();
         console.log('📦 Backend recibió:', result);
+
     }
 
     
@@ -60,7 +104,8 @@ export class SectionVideosDesktop extends LitElement {
                         </div>
 
                         <div>
-                            <input class='search-input' type="file" @change=${this.handleFolderSelect} placeholder="Search folder videos..." />
+                            <input class='search-input' type="file" @change=${(e: Event) => this.handleFolderSelect(e)} placeholder="Search folder videos..." />
+                            <!-- <input class='search-input' type="file" @change=${this.handleFolderSelect} placeholder="Search folder videos..." /> -->
                             <!-- <input class='search-input' type="file" webkitdirectory multiple @change=${this.handleFolderSelect} placeholder="Search folder videos..." /> -->
                         </div>
                     </div>

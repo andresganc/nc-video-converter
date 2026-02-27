@@ -23,4 +23,5 @@ export const useVideoStore = create<VideoState>((set) => ({
 
   clearSelectedVideo: () =>
     set(() => ({ selectedVideo: null })),
+  
 }));

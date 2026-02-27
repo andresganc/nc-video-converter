@@ -1,30 +1,65 @@
 
 import { LitElement, css, html } from 'lit'
-import { customElement } from 'lit/decorators.js'
+import { customElement, state } from 'lit/decorators.js'
+import { useVideoStore } from '@contexts/store-video-seleted';
 
 @customElement('section-converter-desktop')
 export class SectionConverterDesktop extends LitElement {
 
+    @state()
+    selectedVideo = useVideoStore.getState().selectedVideo;
+
+    unsubscribe?: () => void;
+
+    connectedCallback() {
+        super.connectedCallback();
+
+        this.unsubscribe = useVideoStore.subscribe((state) => {
+        this.selectedVideo = state.selectedVideo;
+        });
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this.unsubscribe?.();
+    }
+
     render() {
+
+        if (!this.selectedVideo) {
+            return html`<p>No hay video seleccionado</p>`;
+        }
+
         return html`
             <div>
                 <div>
                     <h4>VIDEO SELECTED</h4>
                 </div>
+
+                <!-- <div>
+                    <p><strong>Nombre:</strong> ${this.selectedVideo.name}</p>
+                    <p><strong>Ruta:</strong> ${this.selectedVideo.path}</p>
+                    <p><strong>Tipo:</strong> ${this.selectedVideo.type}</p>
+                    <p><strong>Tamaño:</strong> ${(this.selectedVideo.size / 1024 / 1024).toFixed(2)} MB</p>
+                </div> -->
                 
                 <div class="section__footer--infoleft infoleft">
                         <div class="video-info">
-                            <p>Nombre: </p> <p></p>
+                            <p>Nombre: ${this.selectedVideo.name}</p>
                         </div>
                         <div class="video-info">
-                            <p>Tamaño: </p> <p></p>
+                            <p>Tamaño: ${(this.selectedVideo.size / 1024 / 1024).toFixed(2)} MB</p>
                         </div>
                         <div class="video-info">
-                            <p>Formato: </p> <p></p>
+                            <p>Formato: ${this.selectedVideo.type}</p>
                         </div>
                         <div class="video-info">
-                            <p>Ultima modificación: </p> <p></p>
+                            <p>Ultima modificación: ${new Date(this.selectedVideo.size).toLocaleDateString()}</p>
                         </div>
+                        <div class="video-info">
+                            <p>Ruta: ${this.selectedVideo.path}</p>
+                        </div>
+
                 </div>
             </div>
         `
