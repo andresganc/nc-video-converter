@@ -18,6 +18,7 @@ export default defineConfig({
       '@': '/src',
       '@assets': '/src/assets',
       '@components': '/src/components',
+      '@contexts': '/src/contexts',
       '@layouts': '/src/layouts',
       '@router': '/src/router',
       '@views': '/src/views',
