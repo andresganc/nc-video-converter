@@ -18,10 +18,14 @@ export class SectionHomeDesktop extends LitElement {
 
             <div class="footer">
                 <a class='menu__nav--nav--item item' href='/videos'>
+                    <svg class="icon" viewBox="0 0 24 24"><title>videos</title><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" /></svg>
+                    
                     <div>
-                        <svg class="icon" viewBox="0 0 24 24"><title>videos</title><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" /></svg>
+                        <p>CHOOSE VIDEO TO CONVERT</p>
                     </div>
-                    <div><p>CHOOSE VIDEO TO CONVERT --></p></div>
+                       
+                    <svg class="icon" viewBox="0 0 24 24"><title>chevron-right</title><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+                    
                 </a>
                 <!-- <p>&copy; 2024 NC Video Converter. All rights reserved.</p>
                 <p>Contact us: <a href="mailto: home@nc-colombia.com">home@nc-colombia.com</a></p> -->
@@ -32,7 +36,7 @@ export class SectionHomeDesktop extends LitElement {
     static styles = css`
 
         
-
+        /* GENERALS */
         a {
             text-decoration: none;
             font-size: 0.8rem;
@@ -48,10 +52,7 @@ export class SectionHomeDesktop extends LitElement {
         }
 
         p {
-            margin: 0;
-            font-size: 0.8rem;
-            color: #d6d6d6;
-            cursor: pointer;
+            font-size: 0.9rem;
         }
 
         .header-desk {
@@ -85,6 +86,7 @@ export class SectionHomeDesktop extends LitElement {
 
         .item {
             display: flex;
+            justify-content: center;
             align-items: center;
             padding: .5rem;
             gap: 0.5rem;

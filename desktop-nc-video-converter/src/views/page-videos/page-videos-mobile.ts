@@ -10,7 +10,7 @@ export class PageVideosMobile extends LitElement {
 
     render() {
         return html`
-                <p>Page converter mobile</p>
+            <section-videos-mobile></section-videos-mobile>
         `
     }
 }
