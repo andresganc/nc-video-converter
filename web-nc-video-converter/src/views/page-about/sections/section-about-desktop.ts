@@ -2,6 +2,8 @@
 import { LitElement, css, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 
+import '@components/list-selects/list-select-01'
+
 @customElement('section-about-desktop')
 export class SectionAboutDesktop extends LitElement {
 
@@ -12,6 +14,8 @@ export class SectionAboutDesktop extends LitElement {
                 <p>This is a video converter application built with Electron and Lit.</p>
                 <p>It allows you to convert videos to different formats using FFmpeg.</p>
             </div>
+
+            <list-select-01></list-select-01>
         `;
     }
 }
