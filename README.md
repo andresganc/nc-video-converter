@@ -15,18 +15,18 @@
 
 ### Home
 
-<img src='./architecture/captures/nc-video-converter-home-01.png'>
+<img src='./architecture/web/captures/nc-video-converter-home-01.png'>
 
 
 <br><hr>
 
 ### Select video
-<img src='./architecture/captures/nc-video-converter-videos-01.png'>
+<img src='./architecture/web/captures/nc-video-converter-videos-01.png'>
 
 <br>
 
-<img src='./architecture/captures/nc-video-converter-videos-02.png'>
+<img src='./architecture/web/captures/nc-video-converter-videos-02.png'>
 
 <br>
 
-<img src='./architecture/captures/nc-video-converter-videos-03.png'>
+<img src='./architecture/web/captures/nc-video-converter-videos-03.png'>
