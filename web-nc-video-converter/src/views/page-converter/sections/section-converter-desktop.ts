@@ -43,7 +43,7 @@ export class SectionConverterDesktop extends LitElement {
                     <p><strong>Tamaño:</strong> ${(this.selectedVideo.size / 1024 / 1024).toFixed(2)} MB</p>
                 </div> -->
                 
-                <div class="section__footer--infoleft infoleft">
+                <div class="section__footer--infovideoselected info-video-selected">
                         <div class="video-info">
                             <p>Nombre: ${this.selectedVideo.name}</p>
                         </div>
@@ -59,7 +59,32 @@ export class SectionConverterDesktop extends LitElement {
                         <div class="video-info">
                             <p>Ruta: ${this.selectedVideo.path}</p>
                         </div>
+                </div>
 
+                <div class="section__footer--infovideoconverter info-video-converter">
+                    <div class="video-info">
+                        <label for="paises">Container:</label>
+                        <select id="container-select" class="select-estilo" name='Select container' required>
+                        <option value="" disabled selected>Select a container ...</option>
+                        <option value="mp4">MP4</option>
+                        <option value="mov">MOV</option>
+                        <option value="mkv">MKV</option>
+                        <option value="avi">AVI</option>
+                        <option value="webm">WebM</option>
+                        </select>
+                    </div>
+                    <div class="video-info">
+                        <p>Tamaño: </p>
+                    </div>
+                    <div class="video-info">
+                        <p>Formato: </p>
+                    </div>
+                    <div class="video-info">
+                        <p>Ultima modificación: </p>
+                    </div>
+                    <div class="video-info">
+                        <p>Ruta: ${this.selectedVideo.path}</p>
+                    </div>
                 </div>
             </div>
         `
@@ -106,6 +131,15 @@ export class SectionConverterDesktop extends LitElement {
                 width: .2px;
                 height: 3rem;
                 background-color: #ccc;
+            }
+
+            /* LIST BOX */
+            .select-estilo {
+                padding: 8px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                background-color: #f9f9f9;
+                cursor: pointer;
             }
     `}      
 
