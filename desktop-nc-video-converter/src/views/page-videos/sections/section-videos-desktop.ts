@@ -2,6 +2,7 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import { useVideoStore } from '@contexts/store-video-seleted';
+import { invoke } from '@tauri-apps/api/core';
 import 'media-chrome';
 
 interface VideoFile {
@@ -12,39 +13,15 @@ interface VideoFile {
 //   mime: string;
 }
 
+
 @customElement('section-videos-desktop')
 export class SectionVideosDesktop extends LitElement {
 
     @state() videos: VideoFile[] = [];
 
-    // handleFolderSelect(e: Event, file:File) {
-
-    //     // ADD FILE TO FRONTEND
-    //     const input = e.target as HTMLInputElement;
-    //     if (!input.files) return;
-
-    //     this.videos = Array.from(input.files)
-    //     .filter(file => file.type.startsWith('video/'))
-    //     .map(file => ({
-    //         file,
-    //         url: URL.createObjectURL(file),
-    //     }));
-
-
-    //     // ADD STATES TO STORE VIDEO SELETED
-    //     useVideoStore.getState().setSelectedVideo({
-    //         name: file.name,
-    //         path: (file as any).path ?? '',
-    //         type: file.type,
-    //         size: file.size,
-    //     });
-
-    //     // navegar a convertidor
-    //     window.location.hash = '#/converter';
-    // }
-
-
     handleFolderSelect(e: Event) {
+
+        // ADD FILE TO FRONTEND
         const input = e.target as HTMLInputElement;
         if (!input.files || input.files.length === 0) return;
 
@@ -58,6 +35,7 @@ export class SectionVideosDesktop extends LitElement {
         const file = videoFiles[0];
         if (!file) return;
 
+        // ADD STATES TO STORE VIDEO SELETED
         useVideoStore.getState().setSelectedVideo({
             name: file.name,
             path: (file as any).path ?? '',
@@ -67,24 +45,49 @@ export class SectionVideosDesktop extends LitElement {
 
         // navegar a convertidor
         window.location.hash = '#/converter';
+
     }
 
-    async uploadFiles() {
+    // BACKEND UPLOAD FILES TO API REST 
+    // async uploadFiles() {
 
-        // ADD FILE TO BACKEND
-        const formData = new FormData();
-        this.videos.forEach(v => {
-        formData.append('videos', v.file);
+    //     // ADD FILE TO BACKEND
+    //     const formData = new FormData();
+    //     this.videos.forEach(v => {
+    //     formData.append('videos', v.file);
+    //     });
+
+    //     const res = await fetch('http://localhost:3000/upload', {
+    //     method: 'POST',
+    //     body: formData,
+    //     });
+
+    //     const result = await res.json();
+    //     console.log('📦 Backend recibió:', result);
+
+    // }
+
+
+    // BACKEND UPLOAD FILES TO USING TAURI
+    async handleUpload(event: Event) {
+      const input = event.target as HTMLInputElement;
+      if (!input.files || input.files.length === 0) return;
+
+      const file = input.files[0];
+    
+      // Convertir archivo a un array de bytes (Uint8Array)
+      const arrayBuffer = await file.arrayBuffer();
+      const data = new Uint8Array(arrayBuffer);
+
+      try {
+        const response = await invoke('upload_video', { 
+          fileName: file.name, 
+          data: Array.from(data) // Enviamos los bytes al backend
         });
-
-        const res = await fetch('http://localhost:3000/upload', {
-        method: 'POST',
-        body: formData,
-        });
-
-        const result = await res.json();
-        console.log('📦 Backend recibió:', result);
-
+        console.log("Archivo guardado:", response);
+      } catch (error) {
+        console.error("Error al subir:", error);
+      }
     }
 
     
